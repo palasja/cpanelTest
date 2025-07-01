@@ -7,11 +7,11 @@ on:
 
 jobs:
   deploy:
-    runs-on: linux-latest
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x, 22.x]
+        node-version: [22.x]
 
     steps:
       - name: Checkout Code 🚚
@@ -24,7 +24,7 @@ jobs:
         run: npm run build
 
       - name: Upload to cPanel 📂
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
